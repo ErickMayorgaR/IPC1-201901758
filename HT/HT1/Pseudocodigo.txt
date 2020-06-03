@@ -1,0 +1,19 @@
+1.Inicio
+2.Definir numero de estudiantes en sección A y B.
+3.Escribir "se procederá a asignarse en la sección A" 
+4. Si estudiantes sección Á <15 entonces
+5.Escribir "Asignado", A= A+1.
+6.Sino
+7.Escribir Cupo insuficiente, se procederá la asignación en la sección B.
+8.Si estudiantes sección B <15 entonces
+9.Escribir "Asignado", B=B+1.
+10.Sino
+11.Escribir ¿Desea abrir una nueva sección?
+12.Si "Si" entonces
+13.Escribir "sección C aperturada", C=1.
+14.Sino
+16.Escribir "no se abrira ninguna seccion"
+17.Fin Si.
+18.Fin Si.
+19.Fin Si.
+20.FIN
