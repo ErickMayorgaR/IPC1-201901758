@@ -22,13 +22,11 @@ import static practica1.Menu.ntot;
  */
 public class tipobarcos {
 
-   
-
     int[] ax1 = new int[9];
     int[] ay1 = new int[9];
     int[] ax2 = new int[9];
     int[] ay2 = new int[9];
-    
+
     int eggnx;
     int eggny;
     String easteregg;
@@ -91,23 +89,23 @@ public class tipobarcos {
 
             }
 
-        } else if (y2 - y1 == 3 && x1 - x2 == 0) {            
+        } else if (y2 - y1 == 3 && x1 - x2 == 0) {
             int contador = 0;
             for (int i = y1; i <= y2; i++) {
-                
+
                 if ("|o|".equals(casilla[x1][i])) {
                     contador++;
                 }
             }
-            if (contador < 1) {              
+            if (contador < 1) {
                 ax1[ntot] = x1;
                 ay1[ntot] = y1;
                 ax2[ntot] = x2;
                 ay2[ntot] = y2;
                 np++;
                 ntot++;
-                for (int i =y1; i<=y2; i++) {
-                    casilla [x1][i] ="|o|";
+                for (int i = y1; i <= y2; i++) {
+                    casilla[x1][i] = "|o|";
                 }
             } else {
                 System.out.println("Espacio ya ocupado");
@@ -334,39 +332,37 @@ public class tipobarcos {
 
                 }
 
-            }
-            else {
+            } else {
                 System.out.println("Espacio ya ocupado");
 
             }
 
         } else if (y2 - y1 == 1 && x1 - x2 == 0) {
-            
+
             int contador = 0;
 
-            for (int i = y1;i<= y2; i++){                
+            for (int i = y1; i <= y2; i++) {
                 if ("|o|".equals(casilla[x1][i])) {
-                contador++;
+                    contador++;
                 }
-                
+
             }
 
             if (contador < 1) {
 
-                
                 for (int i = y1; i <= y2; i++) {
                     casilla[x1][i] = "|o|";
-                ax1[ntot] = x1;
-                ay1[ntot] = y1;
-                ax2[ntot] = x2;
-                ay2[ntot] = y2;
+                    ax1[ntot] = x1;
+                    ay1[ntot] = y1;
+                    ax2[ntot] = x2;
+                    ay2[ntot] = y2;
 
-                nd++;
-                ntot++;
+                    nd++;
+                    ntot++;
 
                 }
             } else {
-                
+
                 System.out.println("Espacio ya ocupado");
 
             }
@@ -374,8 +370,8 @@ public class tipobarcos {
         } else if (y1 - y2 == 1 && x1 - x2 == 0) {
 
             int contador = 0;
-            for (int i = y2;i<=y1;i++) {
-                if ("|o|".equals(casilla[x1][i])) {                    
+            for (int i = y2; i <= y1; i++) {
+                if ("|o|".equals(casilla[x1][i])) {
                     contador++;
                 }
             }
@@ -430,7 +426,6 @@ public class tipobarcos {
             ay1[ntot] = y1;
             ax2[ntot] = x2;
             ay2[ntot] = y2;
-            
 
             nf++;
             ntot++;
@@ -458,18 +453,14 @@ public class tipobarcos {
             eggnx = x1;
             eggny = y1;
 
-            
-
             casilla[x1][y1] = "|$|";
-            
+
             System.out.println("Ingrese lo que desea colocar en el easteregg");
-            Scanner egg =new Scanner (System.in);
-            
-            easteregg= egg.next();
-            
+            Scanner egg = new Scanner(System.in);
+
+            easteregg = egg.next();
+
             negg++;
-            
-            
 
         } else {
             System.out.println("Espacio ya ocupado");
@@ -478,17 +469,17 @@ public class tipobarcos {
         imprimirtablero();
 
     }
-    
-    public void eastereggdefault(){
-        casilla[9][9]= "|$|";
-        easteregg= "201901758 Erick Ivan MayorgaRodriguez";
+
+    public void eastereggdefault() {
+        casilla[9][9] = "|$|";
+
+        easteregg = "201901758 Erick Ivan MayorgaRodriguez";
+
         negg++;
-        
-        
+
     }
 
     public void comprobarintento(int x1, int y1) {
-    
 
         for (int i = 0; i < 9; i++) {
 
@@ -501,21 +492,24 @@ public class tipobarcos {
                         if (ax2[i] - ax1[i] == 1 && ay1[i] - ay2[i] == 0) {
                             for (int a = ax1[i]; a <= ax2[i]; a++) {
                                 casilla[a][ay1[i]] = "|x|";
-                                contadorb++;
+
                             }
+
                         } else if (ax2[i] - ax1[i] == 2 && ay1[i] - ay2[i] == 0) {
                             for (int a = ax1[i]; a <= ax2[i]; a++) {
                                 casilla[a][ay1[i]] = "|x|";
-                                contadorb++;
 
                             }
 
                         } else if (ax2[i] - ax1[i] == 3 && ay1[i] - ay2[i] == 0) {
                             for (int a = ax1[i]; a <= ax2[i]; a++) {
                                 casilla[a][ay1[i]] = "|x|";
-                                contadorb++;
+
                             }
                         }
+                        System.out.println("Le has dado a un barco");
+
+                        contadorb++;
                     }
                 }
 
@@ -528,20 +522,24 @@ public class tipobarcos {
                         if (ax1[i] - ax2[i] == 1 && ay1[i] - ay2[i] == 0) {
                             for (int a = ax2[i]; a <= ax1[i]; a++) {
                                 casilla[a][ay1[i]] = "|x|";
-                                contadorb++;
 
                             }
+
                         } else if (ax1[i] - ax2[i] == 2 && ay1[i] - ay2[i] == 0) {
                             for (int a = ax2[i]; a <= ax1[i]; a++) {
                                 casilla[a][ay1[i]] = "|x|";
-                                contadorb++;
+
                             }
+
                         } else if (ax1[i] - ax2[i] == 3 && ay1[i] - ay2[i] == 0) {
                             for (int a = ax2[i]; a <= ax1[i]; a++) {
                                 casilla[a][ay1[i]] = "|x|";
-                                contadorb++;
+
                             }
+
                         }
+                        System.out.println("Le has dado a un barco");
+                        contadorb++;
                     }
                 }
             } else if (ay1[i] < ay2[i]) {
@@ -553,22 +551,24 @@ public class tipobarcos {
                         if (ay2[i] - ay1[i] == 1 && ax1[i] - ax2[i] == 0) {
                             for (int a = ay1[i]; a <= ay2[i]; a++) {
                                 casilla[ax1[i]][a] = "|x|";
-                                contadorb++;
+
                             }
 
                         } else if (ay2[i] - ay1[i] == 2 && ax1[i] - ax2[i] == 0) {
                             for (int a = ay1[i]; a <= ay2[i]; a++) {
                                 casilla[ax1[i]][a] = "|x|";
-                                contadorb++;
+
                             }
 
                         } else if (ay2[i] - ay1[i] == 3 && ax1[i] - ax2[i] == 0) {
                             for (int a = ay1[i]; a <= ay2[i]; a++) {
                                 casilla[ax1[i]][a] = "|x|";
-                                contadorb++;
+
                             }
 
                         }
+                        System.out.println("Le has dado a un barco");
+                        contadorb++;
                     }
                 }
             } else if (ay2[i] < ay1[i]) {
@@ -580,36 +580,42 @@ public class tipobarcos {
                         if (ay1[i] - ay2[i] == 1 && ax1[i] - ax2[i] == 0) {
                             for (int a = ay2[i]; a <= ay1[i]; a++) {
                                 casilla[ax1[i]][a] = "|x|";
-                                contadorb++;
+
+                                
                             }
                         } else if (ay1[i] - ay2[i] == 2 && ax1[i] - ax2[i] == 0) {
                             for (int a = ay2[i]; a <= ay1[i]; a++) {
                                 casilla[ax1[i]][a] = "|x|";
-                                contadorb++;
+
+                               
                             }
                         } else if (ay1[i] - ay2[i] == 3 && ax1[i] - ax2[i] == 0) {
                             for (int a = ay2[i]; a <= ay1[i]; a++) {
                                 casilla[ax1[i]][a] = "|x|";
-                                contadorb++;
+
+                                
                             }
                         }
+                        System.out.println("Le has dado a un barco");
+                        contadorb++;
                     }
                 }
             } else if (x1 == ax1[i] && x1 == ax2[i] && y1 == ay1[i] && y1 == ay2[i]) {
-
                 casilla[x1][y1] = "|x|";
-            } else if (x1 == eggnx && y1 == eggny) {
+                System.out.println("Le has dado a un barco");
+            }  
+             else if (x1 == eggnx && y1 == eggny) {
                 casilla[x1][y1] = "|$|";
                 System.out.println(easteregg);
 
-            }else if(!(x1 == ax1[i] && x1 == ax2[i] && y1 == ay1[i] && y1 == ay2[i])){
-                
-             
+            }else if (((x1 != ax1[i] && x1 != ax2[i]) && y1 != ay1[i]) && y1 != ay2[i]) {
                 casilla[x1][y1] = "|#|";
-            }
+                
+            }  
 
         }
-        imprimirtablero();
+        
+        System.out.println("\n");
 
     }
 

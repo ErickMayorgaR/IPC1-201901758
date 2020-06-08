@@ -74,7 +74,7 @@ public class Menu {
     public void creartablero() {
 
         //   try{
-        do {
+        do{
             System.out.println("1.Ingresar Barcos");
             System.out.println("2.Cambiar Cantidad de Intentos");
             System.out.println("3.Iniciar Juego");
@@ -103,6 +103,7 @@ public class Menu {
                     visualizartablero();
                     break;
                 case 5:
+                    tablero.iniciartablero();
                     creartablero();
                     break;
                 case 6:
@@ -151,14 +152,14 @@ public class Menu {
     public static int nd;
     public static int nf;
     public static int negg;
-    public static int intentos = 0;
+    public static int intentos;
     public static int ntot;
 
     public void ingresarbarcos() {
         Scanner lector1 = new Scanner(System.in);
 
         //try{
-        while (ntot < 4) {
+        while (ntot < 9) {
             System.out.println("1.Insertar Porta Aviones");
             System.out.println("2.Insertar Submarino");
             System.out.println("3.Insertar Destructores");
@@ -390,54 +391,61 @@ ingresarbarcos();
         
     }
     }
-    public static int contadorb;
+    
+     public static int contadorb;
+    public static int nbarcos;
+   
 
     public void iniciarjuego() {
 
-        if ((ntot) == 9) {
+        if ((ntot) == 2) {
 
             if (negg < 1) {
                 arreglos.eastereggdefault();
+                iniciarjuego();
             } else if (intentos < 1) {
                 intentos = 9;
+                iniciarjuego();
             }
-            Scanner n = new Scanner(System.in);
+        
+            Scanner nombre = new Scanner(System.in);
 
             System.out.println("Ingrese su nombre");
-            String nombre = n.next();
+            
+            String nombr = nombre.next();
 
             int contadori = intentos;
 
-            int contadorb = 0;
+            contadorb=0;            
 
             while (intentos > 0) {
                 DateFormat f = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
                 Date date = new Date();
+                int opt;
 
                 System.out.println(f.format(date));
-                System.out.println("\n\n");
+                System.out.println("");
                 System.out.println("Barcos:\n");
                 System.out.println(contadorb + "/9 hundidos");
-                System.out.println(ntot + "/9 en accion");
+                System.out.println((9-contadorb) + "/9 en accion");
                 System.out.println(intentos + "/9  Intentos");
-                System.out.println("0");
+                System.out.println("");
 
                 imprimirtablero();
-                Scanner lector = new Scanner(System.in);
+                Scanner lectorI = new Scanner(System.in);
                 System.out.println("1.lanzar misil");
                 System.out.println("2.Salir");
-                int op;
-                op = lector.nextInt();
+                
+                opt = lectorI.nextInt();
                 System.out.println("\n\n");
-                switch (op) {
+                switch (opt) {
 
-                    case 1:
-                        while (intentos > 0) {
-                            Scanner lector2 = new Scanner(System.in);
+                    case 1:                        
+                            Scanner lectorII = new Scanner(System.in);
 
                             System.out.println("Por favor ingrese la coordenada en formato (fila,columna)");
-                            String coordenada = lector2.nextLine();
+                            String coordenada = lectorII.nextLine();
 
                             char f1 = coordenada.charAt(1);
                             char f2 = coordenada.charAt(3);
@@ -450,21 +458,27 @@ ingresarbarcos();
 
                             arreglos.comprobarintento(x1, y1);
                             intentos--;
-                        }
+                            
+                        
 
                         break;
+                        
 
                     case 2:
 
                         iniciarM();
 
                     default:
-                        throw new AssertionError();
+                        
                 }
 
             }
-
-        }
+            System.out.println("Juego Terminado"+nombr);
+            
+        }else{System.out.println("aun no se ingresan todos los barcos");
+        
+        
+    }
     }
 
     public void imprimirtablero() {
@@ -475,6 +489,12 @@ ingresarbarcos();
             System.out.println("\n");
 
         }
+    }
+    public void reportecompleto(){
+        
+    }
+    public void reportevictorias(){
+        
     }
 
 }
