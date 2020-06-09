@@ -17,7 +17,7 @@ public class Intefaz {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        SolicitarSeguro s1=new SolicitarSeguro();
+       Principal p1= new Principal();
       
         
     }
