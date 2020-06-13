@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Noasegurado;
+package Vista;
 
 /**
  *
  * @author Erick Mayorga
  */
-public class Noasegurado {
+public class Asegurado {
     
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto1;
+package Vista;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -33,7 +33,7 @@ public JPanel principal;
     private void IniciarComponentes() {
 
         ColocarPaneles();
-        ColocarEtiquetas();
+        
         ColocarBotones();
         
     }
@@ -49,19 +49,21 @@ public JPanel principal;
     
     }
     
-    private void ColocarEtiquetas(){
     
-    JLabel A1= new JLabel();
     
-    A1.setText("Cargar Datos");
-    A1.setOpaque(false);
-    A1.setForeground(Color.WHITE);
-    A1.setBounds(20, 20, 200, 50);
-    A1.setFont(new Font("TimesNewRoman",Font.PLAIN,20));    
-    principal.add(A1);
-}
+    
+
     
     private void ColocarBotones(){
+        
+        JButton Cargardatos= new JButton();    
+    Cargardatos.setText("Cargar Datos");
+    Cargardatos.setOpaque(false);
+    
+    Cargardatos.setBounds(20, 20, 100, 20);
+    Cargardatos.setFont(new Font("TimesNewRoman",Font.BOLD,10));    
+    principal.add(Cargardatos);
+    
         
         JButton Solicitar= new JButton();
         Solicitar.setText("Solicitar Seguro");
@@ -88,7 +90,17 @@ public JPanel principal;
             }
         };
         Solicitar.addActionListener(SolicitarS);
-         
+        
+        
+        ActionListener CargarDatosListener =new  ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               CargarDatos carga =new CargarDatos();
+               
+            }
+            
+        };
+       Cargardatos.addActionListener(CargarDatosListener);
     
     }   
 }

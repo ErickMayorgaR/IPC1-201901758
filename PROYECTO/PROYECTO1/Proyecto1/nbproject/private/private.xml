@@ -3,8 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Erick%20Mayorga/Desktop/IPC1-201901758/PROYECTO/PROYECTO1/Proyecto1/src/proyecto1/Principal.java</file>
-            <file>file:/C:/Users/Erick%20Mayorga/Desktop/IPC1-201901758/PROYECTO/PROYECTO1/Proyecto1/src/proyecto1/SolicitudSeguro.java</file>
+            <file>file:/C:/Users/Erick%20Mayorga/Desktop/IPC1-201901758/PROYECTO/PROYECTO1/Proyecto1/src/Modelo/Tipo.java</file>
+            <file>file:/C:/Users/Erick%20Mayorga/Desktop/IPC1-201901758/PROYECTO/PROYECTO1/Proyecto1/src/Modelo/Uso.java</file>
+            <file>file:/C:/Users/Erick%20Mayorga/Desktop/IPC1-201901758/PROYECTO/PROYECTO1/Proyecto1/src/Modelo/Marca.java</file>
+            <file>file:/C:/Users/Erick%20Mayorga/Desktop/IPC1-201901758/PROYECTO/PROYECTO1/Proyecto1/src/Controlador/ControlDatosautomoviles.java</file>
+            <file>file:/C:/Users/Erick%20Mayorga/Desktop/IPC1-201901758/PROYECTO/PROYECTO1/Proyecto1/src/Modelo/Linea.java</file>
+            <file>file:/C:/Users/Erick%20Mayorga/Desktop/IPC1-201901758/PROYECTO/PROYECTO1/Proyecto1/src/Vista/SolicitudSeguro.java</file>
+            <file>file:/C:/Users/Erick%20Mayorga/Desktop/IPC1-201901758/PROYECTO/PROYECTO1/Proyecto1/src/Modelo/Modelo.java</file>
+            <file>file:/C:/Users/Erick%20Mayorga/Desktop/IPC1-201901758/PROYECTO/PROYECTO1/Proyecto1/src/Vista/CargarDatos.java</file>
+            <file>file:/C:/Users/Erick%20Mayorga/Desktop/IPC1-201901758/PROYECTO/PROYECTO1/Proyecto1/src/Modelo/Repuesto.java</file>
         </group>
     </open-files>
 </project-private>
