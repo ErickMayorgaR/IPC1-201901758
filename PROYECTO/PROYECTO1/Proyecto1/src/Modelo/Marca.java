@@ -10,20 +10,20 @@ package Modelo;
  * @author Erick Mayorga
  */
 public class Marca {
-    String anio;
+    String nombre;
     double porcentajeaumentom;
 
     public Marca(String anio, String porcentajeaumentom) {
-        this.anio = anio;
+        this.nombre = anio;
         this.porcentajeaumentom =Double.parseDouble(porcentajeaumentom);
     }
 
     public String getAnio() {
-        return anio;
+        return nombre;
     }
 
     public void setAnio(String anio) {
-        this.anio = anio;
+        this.nombre = anio;
     }
 
     public double getPorcentajeaumentom() {
@@ -33,6 +33,9 @@ public class Marca {
     public void setPorcentajeaumentom(double porcentajeaumentom) {
         this.porcentajeaumentom = porcentajeaumentom;
     }
-    
+     @Override
+    public String toString() {
+        return  nombre;
+    }
     
 }

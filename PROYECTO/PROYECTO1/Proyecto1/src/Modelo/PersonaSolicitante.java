@@ -9,13 +9,13 @@ package Modelo;
  *
  * @author Erick Mayorga
  */
-public class Persona {
+public class PersonaSolicitante {
     String nombre;
     String apellidos;
     long dpi;
     int telefono;
 
-    public Persona(String nombres, String apellitos, long dpi, int telefono) {
+    public PersonaSolicitante(String nombres, String apellitos, long dpi, int telefono) {
         this.nombre = nombres;
         this.apellidos = apellitos;
         this.dpi = dpi;

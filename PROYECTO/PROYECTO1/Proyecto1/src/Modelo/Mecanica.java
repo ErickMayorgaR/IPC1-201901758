@@ -34,6 +34,9 @@ public class Mecanica {
         this.precio = precio;
     }
     
-    
+     @Override
+    public String toString() {
+        return  nombre;
+    }
     
 }

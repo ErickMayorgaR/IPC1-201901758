@@ -9,6 +9,9 @@ import Modelo.*;
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.Painter;
+import jdk.nashorn.api.tree.ReturnTree;
+
 
 /**
  *
@@ -17,13 +20,13 @@ import javax.swing.JTextField;
  */
 public class ControlDatosautomoviles {
 
-    public Tipo[] tipos = new Tipo[20];
-    public Modelo[] modelos = new Modelo[20];
-    public Marca[] marcas = new Marca[20];
-    public Linea[] lineas = new Linea[20];
-    public Uso[] usos = new Uso[20];
-    public Mecanica[] mecanicas = new Mecanica[20];
-    public Repuesto[] repuestos = new Repuesto[20];
+    public static Tipo[] tipos = new Tipo[20];
+    public static Modelo[] modelos = new Modelo[20];
+    public static Marca[] marcas = new Marca[20];
+    public static Linea[] lineas = new Linea[20];
+    public static Uso[] usos = new Uso[20];
+    public static Mecanica[] mecanicas = new Mecanica[20];
+    public static Repuesto[] repuestos = new Repuesto[20];
     int contadortipo;
     int contadormodelo;
     int contadoruso;
@@ -31,16 +34,19 @@ public class ControlDatosautomoviles {
     int contadorlinea;
     int contadormecanica;
     int contadorrepuesto;
-    int Tarreglos = 20;
-    
-    
+    public static int Tarreglos=20;
 
-    public void cargadatos(JTextArea campotexto) {
+
+  
+
+    public static void cargadatos(JTextArea campotexto) {
         String datos = campotexto.getText();
         String[] arreglo = datos.split("\n");
-
+        
         for (String categoria : arreglo) {
-            String[] clasificar = categoria.split(",");
+            
+            
+            String[] clasificar = categoria.split(",");            
             switch (clasificar[0]) {
                 case "TIPO":
                     agregartipo(new Tipo(clasificar[1], clasificar[2]));
@@ -65,74 +71,148 @@ public class ControlDatosautomoviles {
                     break;
             }
         }
-
     }
 
-    public void agregartipo(Tipo untipo) {
+    public static void agregartipo(Tipo untipo) {
         for (int i = 0; i < Tarreglos; i++) {
             if (tipos[i] == null) {
                 tipos[i] = untipo;
+                return;
             }
         }
 
     }
 
-    public void agregarmodelo(Modelo unModelo) {
+    public static void agregarmodelo(Modelo unModelo) {
         for (int i = 0; i < Tarreglos; i++) {
             if (modelos[i] == null) {
                 modelos[i] = unModelo;
+                return;
             }
         }
 
     }
 
-    public void agregarmarca(Marca unaMarca) {
+    public static void agregarmarca(Marca unaMarca) {
         for (int i = 0; i < Tarreglos; i++) {
             if (marcas[i] == null) {
                 marcas[i] = unaMarca;
+                return;
             }
         }
     }
 
-    public void agregarlinea(Linea unaLinea) {
+    public static void agregarlinea(Linea unaLinea) {
         for (int i = 0; i < Tarreglos; i++) {
             if (lineas[i] == null) {
                 lineas[i] = unaLinea;
+                return;
             }
         }
     }
 
-    public void agregaruso(Uso unUso) {
+    public static void agregaruso(Uso unUso) {
         for (int i = 0; i < Tarreglos; i++) {
             if (usos[i] == null) {
                 usos[i] = unUso;
+                return;
             }
         }
     }
 
-    public void agregarmecanica(Mecanica unaMecanica) {
+    public static void agregarmecanica(Mecanica unaMecanica) {
         for (int i = 0; i < Tarreglos; i++) {
             if (mecanicas[i] == null) {
                 mecanicas[i] = unaMecanica;
+                return;
             }
 
         }
     }
 
-    public void agregarrepuesto(Repuesto unRepuesto) {
+    public static void agregarrepuesto(Repuesto unRepuesto) {
         for (int i = 0; i < Tarreglos; i++) {
             if (repuestos[i] == null) {
                 repuestos[i] = unRepuesto;
+                return;
+            }
+        }
+    }
+
+    public static void Tipoenlista(JComboBox lista) {
+        lista.removeAllItems();
+        
+        for (int i = 0; i < Tarreglos; i++) {
+            if (tipos[i]!= null) {
+                
+                lista.addItem(tipos[i]);
+               
+                
+            }
+
+        }
+    }
+
+    public static  void Usoenlista(JComboBox lista) {
+        lista.removeAllItems();
+        for (int i = 0; i < Tarreglos; i++) {
+            if (usos[i] != null) {
+                lista.addItem(usos[i]);
             }
         }
     }
     
-    public void Tipoenlista(JComboBox lista){
+    public static void Marcaenlista(JComboBox lista) {
         lista.removeAllItems();
-        for(int i=0; i<Tarreglos; i++){
-            lista.addItem(this.tipos[i]);
+        for (int i = 0; i < Tarreglos; i++) {
+            if (marcas[i] != null) {
+                lista.addItem(marcas[i]);
+            }
         }
+    }
+    
+    public static void Lineaenlista(JComboBox lista) {
+        lista.removeAllItems();
+        for (int i = 0; i < Tarreglos; i++) {
+            if (lineas[i] != null) {
+                lista.addItem(lineas[i]);
+            }
+        }
+    }
+    
+    public static void Modeloenlista(JComboBox lista) {
+        lista.removeAllItems();
+        for (int i = 0; i < Tarreglos; i++) {
+            if (modelos[i] != null) {
+                lista.addItem(modelos[i]);
+            }
+        }
+    }
+    
+    public static double calculoPTR(JComboBox j1, JComboBox j2, JComboBox j3){
+       
+      Marca marcaseleccionada= (Marca)j1.getSelectedItem();
+      Linea lineaseleccionada=(Linea)j2.getSelectedItem();
+      Uso usoseleccionado=(Uso)j3.getSelectedItem();
+      
+      double PTR= marcaseleccionada.getPorcentajeaumentom()+lineaseleccionada.getValor()+usoseleccionado.getPorcentajeaumentoU();
+        System.out.println(PTR);
+        return PTR;
+        
         
     }
-
-}
+    
+    public static double valorreal(JComboBox j1, JComboBox j2){
+      Tipo tiposelect=(Tipo)j1.getSelectedItem();
+      Modelo modeloselect=(Modelo)j2.getSelectedItem();
+      
+      double valorreal=  tiposelect.getValormaximo()-(modeloselect.getValor()*tiposelect.getValormaximo());
+      
+        return valorreal;
+    }
+       
+        
+        
+      
+    
+   }

@@ -9,17 +9,6 @@ package Vista;
  *
  * @author Erick Mayorga
  */
-public class Proyecto1 {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        
-    // Principal p= new Principal();
-     Administrador ad = new Administrador();
-     
-        
+public class Iniciarsesion {
     
-}
 }

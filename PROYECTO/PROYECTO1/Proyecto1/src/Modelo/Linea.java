@@ -33,6 +33,10 @@ public class Linea {
     public void setValor(double valor) {
         this.porcentajeaumentoL = valor;
     }
+     @Override
+    public String toString() {
+        return  nombre;
+    }
     
     
     

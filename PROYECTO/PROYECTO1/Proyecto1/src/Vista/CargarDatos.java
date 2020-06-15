@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package Vista;
-import Controlador.ControlDatosautomoviles.*;
+import Controlador.ControlDatosautomoviles;
+import Controlador.ControladorPersona;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.HeadlessException;
@@ -22,7 +23,8 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
  * @author Erick Mayorga
  */
 public class CargarDatos extends JFrame {
-    public JPanel Cargardatos;
+    public JPanel Cargardatos;    
+ 
     
     public CargarDatos() throws HeadlessException{
         IniciarComponentes();
@@ -31,7 +33,7 @@ public class CargarDatos extends JFrame {
         setTitle("Cargar Datos");
         setLocationRelativeTo(null);
         setVisible(true);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
         
 
     }
@@ -61,6 +63,8 @@ public class CargarDatos extends JFrame {
 
     
     private void ColocarBotones(){
+         
+    
         
        
         
@@ -83,8 +87,11 @@ public class CargarDatos extends JFrame {
             public void actionPerformed(ActionEvent e) {
              Controlador.ControlDatosautomoviles.cargadatos(CargaDatosArea);
              
+             
             }
-        }
+        };
+        CargaDatosButton.addActionListener(CargaDat);        
+        
         
         
         

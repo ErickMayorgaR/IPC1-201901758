@@ -33,6 +33,11 @@ public class Uso {
     public void setPorcentajeaumentoU(double porcentajeaumentoU) {
         this.porcentajeaumentoU = porcentajeaumentoU;
     }
+
+    @Override
+    public String toString() {
+        return  nombre;
+    }
     
     
     

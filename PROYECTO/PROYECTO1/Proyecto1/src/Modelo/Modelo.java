@@ -47,4 +47,8 @@ public class Modelo {
         this.porcentajedep = valor;
     }
 
+     @Override
+    public String toString() {
+        return  anio;
+    }
 }

@@ -34,6 +34,9 @@ public class Tipo {
         this.valormaximo = valormaximo;
     }
     
-    
+     @Override
+    public String toString() {
+        return  nombre;
+    }
     
 }

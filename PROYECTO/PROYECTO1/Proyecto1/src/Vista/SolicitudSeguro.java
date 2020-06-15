@@ -5,7 +5,7 @@
  */
 package Vista;
 
-import Modelo.Persona;
+import Modelo.PersonaSolicitante;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.HashSet;
@@ -17,6 +17,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import static javax.swing.WindowConstants.HIDE_ON_CLOSE;
 import Controlador.*;
+import Modelo.Linea;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -26,6 +30,7 @@ import Controlador.*;
 public class SolicitudSeguro extends JFrame {
     
     ControladorPersona ControlSolicitud = new ControladorPersona();
+    ControlDatosautomoviles controlData= new ControlDatosautomoviles();
     
 
     public JPanel PanelSolicitud;
@@ -149,7 +154,7 @@ public class SolicitudSeguro extends JFrame {
         CostoPrima.setText("Costo Prima");
         CostoPrima.setOpaque(false);
         CostoPrima.setForeground(Color.WHITE);
-        CostoPrima.setBounds(20, 370, 100, 50);
+        CostoPrima.setBounds(20, 370, 100, 50);        
         CostoPrima.setFont(new Font("TimesNewRoman", Font.PLAIN, 16));
         PanelSolicitud.add(CostoPrima);
 
@@ -157,7 +162,7 @@ public class SolicitudSeguro extends JFrame {
         Deducible.setText("Deducible");
         Deducible.setOpaque(false);
         Deducible.setForeground(Color.WHITE);
-        Deducible.setBounds(200, 370, 100, 50);
+        Deducible.setBounds(200, 370, 100, 50);        
         Deducible.setFont(new Font("TimesNewRoman", Font.PLAIN, 16));
         PanelSolicitud.add(Deducible);
 
@@ -165,7 +170,7 @@ public class SolicitudSeguro extends JFrame {
         PosibleCostoP.setText("Posible Costo Prima");
         PosibleCostoP.setOpaque(false);
         PosibleCostoP.setForeground(Color.WHITE);
-        PosibleCostoP.setBounds(40, 400, 200, 50);
+        PosibleCostoP.setBounds(40, 400, 200, 50);        
         PosibleCostoP.setFont(new Font("TimesNewRoman", Font.PLAIN, 16));
         PanelSolicitud.add(PosibleCostoP);
 
@@ -202,7 +207,7 @@ public class SolicitudSeguro extends JFrame {
         TelefonoTextField.setBounds(200, 125, 150, 20);
         PanelSolicitud.add(TelefonoTextField);
         
-        
+         
 
         JComboBox TipoBox = new JComboBox();
         TipoBox.setBounds(200, 155, 150, 20);
@@ -223,25 +228,37 @@ public class SolicitudSeguro extends JFrame {
         JComboBox Modelo = new JComboBox();
         Modelo.setBounds(200, 275, 150, 20);
         PanelSolicitud.add(Modelo);
-
+        
+         ControlDatosautomoviles.Usoenlista(UsoBox);
+          ControlDatosautomoviles.Tipoenlista(TipoBox);
+          ControlDatosautomoviles.Lineaenlista(Linea);
+          ControlDatosautomoviles.Marcaenlista(Marca);
+          ControlDatosautomoviles .Modeloenlista(Modelo);
+        
+        
         JTextField ValorVehiculoTextField = new JTextField();
         ValorVehiculoTextField.setBounds(200, 305, 150, 20);
         PanelSolicitud.add(ValorVehiculoTextField);
 
         JTextField CostoPrimaTextField = new JTextField();
         CostoPrimaTextField.setBounds(110, 385, 80, 20);
+        CostoPrimaTextField.setEditable(false);
         PanelSolicitud.add(CostoPrimaTextField);
+        
 
         JTextField DeducibleTextField = new JTextField();
         DeducibleTextField.setBounds(280, 385, 80, 20);
+        DeducibleTextField.setEditable(false);
         PanelSolicitud.add(DeducibleTextField);
 
         JTextField PosibleCostoPTextField = new JTextField();
         PosibleCostoPTextField.setBounds(200, 415, 140, 20);
+        PosibleCostoPTextField.setEditable(false);
         PanelSolicitud.add(PosibleCostoPTextField);
 
         JTextField PosibleDeducibleTextField = new JTextField();
         PosibleDeducibleTextField.setBounds(200, 445, 140, 20);
+        PosibleDeducibleTextField.setEditable(false);
         PanelSolicitud.add(PosibleDeducibleTextField);
 
         JButton menosdeducible = new JButton();
@@ -268,24 +285,81 @@ public class SolicitudSeguro extends JFrame {
         Cancelar.setFont(new Font("TimesNewRoman", Font.BOLD, 10));
         Cancelar.setBounds(300, 490, 80, 20);
         PanelSolicitud.add(Cancelar);
-
+/*
         String Nombre = NombreTextField.getText();
         String Apellido = TelefonoTextField.getText();
         String DPI = DpiTextField.getText();
         long DPIL= Long.parseLong(DPI);
+        */
         
         
+        //String telefono = TelefonoTextField.getText();
+        //int telegonon=Integer.parseInt(telefono);
         
-        String telefono = TelefonoTextField.getText();
-        int telegonon=Integer.parseInt(telefono);
+       // PersonaSolicitante persona= new PersonaSolicitante(Nombre, Apellido, DPIL, telegonon);
         
-        Persona persona= new Persona(Nombre, Apellido, DPIL, telegonon);
+       // ControlSolicitud.insertarPersona(persona);
+      
         
-        ControlSolicitud.insertarPersona(persona);
+        ActionListener cotizarActionListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String valor= ValorVehiculoTextField.getText();
+                
+                double valorvehiculo= Double.parseDouble(valor);
+                double valorreal= ControlDatosautomoviles.valorreal(TipoBox, Modelo);
+                double primatot= valorvehiculo*(0.1+ControlDatosautomoviles.calculoPTR(Marca,Linea,UsoBox));
+                if (valorvehiculo>valorreal){
+                    JOptionPane.showMessageDialog(null,"ingreso un valor de vehiculo no aceptable");
+                }else{
+                    double cp=  primatot/12;
+                    double cd= 0.07*valorvehiculo;
+                    CostoPrimaTextField.setText(String.valueOf(cp));
+                    DeducibleTextField.setText(String.valueOf(cd));
+                    PosibleCostoPTextField.setText(String.valueOf(cp));
+                    PosibleDeducibleTextField.setText(String.valueOf(cd));                  
+                }
+            }
+        };
+       Cotizar.addActionListener(cotizarActionListener);
+       
+       
         
-        
-        
-
+       ActionListener menosdeducibleAL= new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                double cprima=Double.parseDouble(CostoPrimaTextField.getText());
+                double cdeducible=Double.parseDouble(DeducibleTextField.getText());
+                
+                double menosd= cdeducible-(cdeducible/10);
+                double maspr= cprima+(0.03*cprima);
+                
+                    PosibleCostoPTextField.setText(String.valueOf(maspr));
+                    PosibleDeducibleTextField.setText(String.valueOf(menosd));                  
+                }                      
+       };menosdeducible.addActionListener(menosdeducibleAL);
+       
+       
+       
+       ActionListener masdeducibleAL= new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                 double cprima=Double.parseDouble(CostoPrimaTextField.getText());
+                double cdeducible=Double.parseDouble(DeducibleTextField.getText());
+                
+                double masd= cdeducible+(cdeducible/10);
+                double menospr= cprima-(0.03*cprima);
+                
+                    PosibleCostoPTextField.setText(String.valueOf(menospr));
+                    PosibleDeducibleTextField.setText(String.valueOf(masd));   
+                
+                
+            }
+       };masdeducible.addActionListener(masdeducibleAL);
+       
+       
+       
+       
     }
 
 }

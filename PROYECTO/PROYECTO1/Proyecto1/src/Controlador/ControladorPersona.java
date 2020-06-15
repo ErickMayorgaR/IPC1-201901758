@@ -5,7 +5,7 @@
  */
 package Controlador;
 
-import Modelo.Persona;
+import Modelo.PersonaSolicitante;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,14 +15,14 @@ import javax.swing.JOptionPane;
 
  public class ControladorPersona {
 
-    Persona[] solicitantes;
+    PersonaSolicitante[] solicitantes;
     int contadorpersonas;
 
     public ControladorPersona() {
-        this.solicitantes = new Persona[20];
+        this.solicitantes = new PersonaSolicitante[20];
     }
 
-    public void insertarPersona(Persona solicitanteSeguro) {
+    public void insertarPersona(PersonaSolicitante solicitanteSeguro) {
         if (this.contadorpersonas <= 19) {
             this.solicitantes[this.contadorpersonas] = solicitanteSeguro;
             this.contadorpersonas++;
