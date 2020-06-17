@@ -9,6 +9,6 @@ package Vista;
  *
  * @author Erick Mayorga
  */
-public class Misincidentes {
+public class Namispagos {
     
 }

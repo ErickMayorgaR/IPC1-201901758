@@ -18,7 +18,7 @@ public class Marca {
         this.porcentajeaumentom =Double.parseDouble(porcentajeaumentom);
     }
 
-    public String getAnio() {
+    public String getNombre() {
         return nombre;
     }
 

@@ -5,7 +5,7 @@
  */
 package Vista;
 
-import Modelo.PersonaSolicitante;
+import Modelo.PersonaSeguro;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.HashSet;
@@ -17,21 +17,21 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import static javax.swing.WindowConstants.HIDE_ON_CLOSE;
 import Controlador.*;
-import Modelo.Linea;
+import Modelo.*;
+import Modelo.Descripcion;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-
 
 /**
  *
  * @author Erick Mayorga
  */
 public class SolicitudSeguro extends JFrame {
-    
+
     ControladorPersona ControlSolicitud = new ControladorPersona();
-    ControlDatosautomoviles controlData= new ControlDatosautomoviles();
-    
+    ControlDatosautomoviles controlData = new ControlDatosautomoviles();
 
     public JPanel PanelSolicitud;
 
@@ -154,7 +154,7 @@ public class SolicitudSeguro extends JFrame {
         CostoPrima.setText("Costo Prima");
         CostoPrima.setOpaque(false);
         CostoPrima.setForeground(Color.WHITE);
-        CostoPrima.setBounds(20, 370, 100, 50);        
+        CostoPrima.setBounds(20, 370, 100, 50);
         CostoPrima.setFont(new Font("TimesNewRoman", Font.PLAIN, 16));
         PanelSolicitud.add(CostoPrima);
 
@@ -162,7 +162,7 @@ public class SolicitudSeguro extends JFrame {
         Deducible.setText("Deducible");
         Deducible.setOpaque(false);
         Deducible.setForeground(Color.WHITE);
-        Deducible.setBounds(200, 370, 100, 50);        
+        Deducible.setBounds(200, 370, 100, 50);
         Deducible.setFont(new Font("TimesNewRoman", Font.PLAIN, 16));
         PanelSolicitud.add(Deducible);
 
@@ -170,7 +170,7 @@ public class SolicitudSeguro extends JFrame {
         PosibleCostoP.setText("Posible Costo Prima");
         PosibleCostoP.setOpaque(false);
         PosibleCostoP.setForeground(Color.WHITE);
-        PosibleCostoP.setBounds(40, 400, 200, 50);        
+        PosibleCostoP.setBounds(40, 400, 200, 50);
         PosibleCostoP.setFont(new Font("TimesNewRoman", Font.PLAIN, 16));
         PanelSolicitud.add(PosibleCostoP);
 
@@ -206,8 +206,6 @@ public class SolicitudSeguro extends JFrame {
         JTextField TelefonoTextField = new JTextField();
         TelefonoTextField.setBounds(200, 125, 150, 20);
         PanelSolicitud.add(TelefonoTextField);
-        
-         
 
         JComboBox TipoBox = new JComboBox();
         TipoBox.setBounds(200, 155, 150, 20);
@@ -217,25 +215,24 @@ public class SolicitudSeguro extends JFrame {
         UsoBox.setBounds(200, 185, 150, 20);
         PanelSolicitud.add(UsoBox);
 
-        JComboBox Marca = new JComboBox();
-        Marca.setBounds(200, 215, 150, 20);
-        PanelSolicitud.add(Marca);
+        JComboBox MarcaBox = new JComboBox();
+        MarcaBox.setBounds(200, 215, 150, 20);
+        PanelSolicitud.add(MarcaBox);
 
-        JComboBox Linea = new JComboBox();
-        Linea.setBounds(200, 245, 150, 20);
-        PanelSolicitud.add(Linea);
+        JComboBox LineaBox = new JComboBox();
+        LineaBox.setBounds(200, 245, 150, 20);
+        PanelSolicitud.add(LineaBox);
 
-        JComboBox Modelo = new JComboBox();
-        Modelo.setBounds(200, 275, 150, 20);
-        PanelSolicitud.add(Modelo);
-        
-         ControlDatosautomoviles.Usoenlista(UsoBox);
-          ControlDatosautomoviles.Tipoenlista(TipoBox);
-          ControlDatosautomoviles.Lineaenlista(Linea);
-          ControlDatosautomoviles.Marcaenlista(Marca);
-          ControlDatosautomoviles .Modeloenlista(Modelo);
-        
-        
+        JComboBox ModeloBox = new JComboBox();
+        ModeloBox.setBounds(200, 275, 150, 20);
+        PanelSolicitud.add(ModeloBox);
+
+        ControlDatosautomoviles.Usoenlista(UsoBox);
+        ControlDatosautomoviles.Tipoenlista(TipoBox);
+        ControlDatosautomoviles.Lineaenlista(LineaBox);
+        ControlDatosautomoviles.Marcaenlista(MarcaBox);
+        ControlDatosautomoviles.Modeloenlista(ModeloBox);
+
         JTextField ValorVehiculoTextField = new JTextField();
         ValorVehiculoTextField.setBounds(200, 305, 150, 20);
         PanelSolicitud.add(ValorVehiculoTextField);
@@ -244,7 +241,6 @@ public class SolicitudSeguro extends JFrame {
         CostoPrimaTextField.setBounds(110, 385, 80, 20);
         CostoPrimaTextField.setEditable(false);
         PanelSolicitud.add(CostoPrimaTextField);
-        
 
         JTextField DeducibleTextField = new JTextField();
         DeducibleTextField.setBounds(280, 385, 80, 20);
@@ -285,79 +281,124 @@ public class SolicitudSeguro extends JFrame {
         Cancelar.setFont(new Font("TimesNewRoman", Font.BOLD, 10));
         Cancelar.setBounds(300, 490, 80, 20);
         PanelSolicitud.add(Cancelar);
-/*
-        String Nombre = NombreTextField.getText();
-        String Apellido = TelefonoTextField.getText();
-        String DPI = DpiTextField.getText();
-        long DPIL= Long.parseLong(DPI);
-        */
-        
-        
-        //String telefono = TelefonoTextField.getText();
-        //int telegonon=Integer.parseInt(telefono);
-        
-       // PersonaSolicitante persona= new PersonaSolicitante(Nombre, Apellido, DPIL, telegonon);
-        
-       // ControlSolicitud.insertarPersona(persona);
-      
-        
+
         ActionListener cotizarActionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String valor= ValorVehiculoTextField.getText();
-                
-                double valorvehiculo= Double.parseDouble(valor);
-                double valorreal= ControlDatosautomoviles.valorreal(TipoBox, Modelo);
-                double primatot= valorvehiculo*(0.1+ControlDatosautomoviles.calculoPTR(Marca,Linea,UsoBox));
-                if (valorvehiculo>valorreal){
-                    JOptionPane.showMessageDialog(null,"ingreso un valor de vehiculo no aceptable");
-                }else{
-                    double cp=  primatot/12;
-                    double cd= 0.07*valorvehiculo;
+                String valor = ValorVehiculoTextField.getText();
+
+                double valorvehiculo = Double.parseDouble(valor);
+                double valorreal = ControlDatosautomoviles.valorreal(TipoBox, ModeloBox);
+                double primatot = valorvehiculo * (0.1 + ControlDatosautomoviles.calculoPTR(MarcaBox, LineaBox, UsoBox));
+                if (valorvehiculo > valorreal) {
+                    JOptionPane.showMessageDialog(null, "ingreso un valor de vehiculo no aceptable");
+                } else {
+                    double cp = primatot / 12;
+                    double cd = 0.07 * valorvehiculo;
                     CostoPrimaTextField.setText(String.valueOf(cp));
                     DeducibleTextField.setText(String.valueOf(cd));
                     PosibleCostoPTextField.setText(String.valueOf(cp));
-                    PosibleDeducibleTextField.setText(String.valueOf(cd));                  
+                    PosibleDeducibleTextField.setText(String.valueOf(cd));
                 }
             }
         };
-       Cotizar.addActionListener(cotizarActionListener);
-       
-       
-        
-       ActionListener menosdeducibleAL= new ActionListener() {
+        Cotizar.addActionListener(cotizarActionListener);
+
+        ActionListener menosdeducibleAL = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                double cprima=Double.parseDouble(CostoPrimaTextField.getText());
-                double cdeducible=Double.parseDouble(DeducibleTextField.getText());
-                
-                double menosd= cdeducible-(cdeducible/10);
-                double maspr= cprima+(0.03*cprima);
-                
+                double cprima = Double.parseDouble(CostoPrimaTextField.getText());
+                double cdeducible = Double.parseDouble(DeducibleTextField.getText());
+
+                double menosd = cdeducible - (cdeducible / 10);
+                double masd = cdeducible + (cdeducible / 10);
+                double maspr = cprima + (0.03 * cprima);
+                double menospr = cprima - (0.03 * cprima);
+                double PC = Double.parseDouble(PosibleDeducibleTextField.getText());
+
+                if (PC == masd) {
+                    PosibleCostoPTextField.setText(String.valueOf(cprima));
+                    PosibleDeducibleTextField.setText(String.valueOf(cdeducible));
+
+                } else {
+
                     PosibleCostoPTextField.setText(String.valueOf(maspr));
-                    PosibleDeducibleTextField.setText(String.valueOf(menosd));                  
-                }                      
-       };menosdeducible.addActionListener(menosdeducibleAL);
-       
-       
-       
-       ActionListener masdeducibleAL= new ActionListener() {
+                    PosibleDeducibleTextField.setText(String.valueOf(menosd));
+                }
+            }
+        };
+        menosdeducible.addActionListener(menosdeducibleAL);
+
+        ActionListener masdeducibleAL = new ActionListener() {
+
             @Override
             public void actionPerformed(ActionEvent e) {
-                 double cprima=Double.parseDouble(CostoPrimaTextField.getText());
-                double cdeducible=Double.parseDouble(DeducibleTextField.getText());
-                
-                double masd= cdeducible+(cdeducible/10);
-                double menospr= cprima-(0.03*cprima);
-                
+                double cprima = Double.parseDouble(CostoPrimaTextField.getText());
+                double cdeducible = Double.parseDouble(DeducibleTextField.getText());
+
+                double masd = cdeducible + (cdeducible / 10);
+                double menosd = cdeducible - (cdeducible / 10);
+                double maspr = cprima + (0.03 * cprima);
+                double menospr = cprima - (0.03 * cprima);
+                double PC = Double.parseDouble(PosibleDeducibleTextField.getText());
+
+                if (PC == menosd) {
+                    PosibleCostoPTextField.setText(String.valueOf(cprima));
+                    PosibleDeducibleTextField.setText(String.valueOf(cdeducible));
+
+                } else {
+
                     PosibleCostoPTextField.setText(String.valueOf(menospr));
-                    PosibleDeducibleTextField.setText(String.valueOf(masd));   
-                
-                
+                    PosibleDeducibleTextField.setText(String.valueOf(masd));
+                }
+
             }
-       };masdeducible.addActionListener(masdeducibleAL);
-       
-       
+        };
+        masdeducible.addActionListener(masdeducibleAL);
+
+        ActionListener SolicitarSeguroListener;
+        SolicitarSeguroListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String Nombre = NombreTextField.getText();
+                String Apellido = TelefonoTextField.getText();
+                
+                String DPIS = DpiTextField.getText();
+                long DPI = Long.parseLong(DPIS);
+                
+                String telefonoS = TelefonoTextField.getText();
+                int telefono = Integer.parseInt(telefonoS);
+                
+                String Poliza= PosibleCostoPTextField.getText();
+                String Deducible=PosibleDeducibleTextField.getText();
+                
+                String valorvehiculo=ValorVehiculoTextField.getText();
+
+                Tipo estetipo = (Tipo) TipoBox.getSelectedItem();
+                String TipoS = estetipo.getNombre();
+                
+                Modelo estemodelo = (Modelo) ModeloBox.getSelectedItem();
+                String modeloS = estemodelo.getAnio();
+                Marca estamarca = (Marca) MarcaBox.getSelectedItem();
+                String marcaS = estamarca.getNombre();
+                Linea estalinea = (Linea) LineaBox.getSelectedItem();
+                String lineaS = estalinea.getNombre();
+                Uso esteuso = (Uso) UsoBox.getSelectedItem();
+                String usoS = esteuso.getNombre();
+
+                Descripcion descripcionS= new Descripcion(TipoS, modeloS, marcaS, lineaS, usoS);
+                
+                
+                
+                
+                ControladorPersona.insertarSolPersona(new PersonaSeguro(Nombre, Apellido, DPI, telefono, Poliza, Deducible, valorvehiculo,descripcionS));
+
+            }
+        };
+SolicitarSeguro.addActionListener(SolicitarSeguroListener);
+                
+      
        
        
     }

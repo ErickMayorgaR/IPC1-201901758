@@ -7,6 +7,8 @@ package Vista;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -94,6 +96,15 @@ public class Administrador extends JFrame {
         cerrarsesion.setBounds(20, 20, 150, 20);
         cerrarsesion.setFont(new Font("TimesNewRoman", Font.BOLD, 10));
         Admin.add(cerrarsesion);
-
-    }
-}
+        
+        
+        
+        ActionListener SolSeguro= new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SolicitudesSeguro SS = new SolicitudesSeguro(); 
+                setVisible(true);
+            }
+        }; Solicitudes.addActionListener(SolSeguro);       
+     }        
+  }

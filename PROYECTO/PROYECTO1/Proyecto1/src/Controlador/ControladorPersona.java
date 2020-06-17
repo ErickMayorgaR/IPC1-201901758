@@ -5,30 +5,73 @@
  */
 package Controlador;
 
-import Modelo.PersonaSolicitante;
+import Modelo.PersonaNoAsegurada;
+import Modelo.PersonaSeguro;
+import java.io.ObjectOutput;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Erick Mayorga
  */
+public class ControladorPersona {
 
- public class ControladorPersona {
+    public static PersonaSeguro[] solicitantes = new PersonaSeguro[10];
+    public static PersonaSeguro[] personaAsegurada= new PersonaSeguro[10];
+    public static int contadorpersonas;
 
-    PersonaSolicitante[] solicitantes;
-    int contadorpersonas;
+    public static void insertarSolPersona(PersonaSeguro unSolicitanteSeguro) {
 
-    public ControladorPersona() {
-        this.solicitantes = new PersonaSolicitante[20];
-    }
+        for (int i = 0; i < 10; i++) {
+            if (solicitantes[i] == null) {
+                solicitantes[i] = unSolicitanteSeguro;
 
-    public void insertarPersona(PersonaSolicitante solicitanteSeguro) {
-        if (this.contadorpersonas <= 19) {
-            this.solicitantes[this.contadorpersonas] = solicitanteSeguro;
-            this.contadorpersonas++;
-        } else {
-            JOptionPane.showMessageDialog(null, "Ya se lleno");
-
+                System.out.println(solicitantes[i].toString());
+                System.out.println(solicitantes[i]);
+                contadorpersonas++;
+                return;
+            }
         }
     }
+
+    public static Object[][] tabla() {
+        String[][] sss = new String[10][8];
+        for (int i = 0; i < 10; i++) {
+            if (solicitantes[i] != null) {
+                for (int j = 0; j < 8; j++) {
+                    if (solicitantes[i].Creararreglos() != null);
+                    {
+                        String[] solicita;
+                        solicita = solicitantes[i].Creararreglos();
+                        String ss = solicita[j];
+                        if (ss != null) {
+                            sss[i][j] = ss;
+                        }
+                    }
+                }
+            }
+        }
+        Object[][] tabla = sss;
+        return tabla;
+    }
+
+
+
+public static void aceptarSolicitud(String DPI){
+     for (int i = 0; i < 10; i++) {
+            if (solicitantes[i] != null) {
+             if (String.valueOf(solicitantes[i].getDpi()).equals(DPI)){
+                    personaAsegurada[i] = solicitantes[i];
+                    solicitantes[i]= null;
+                    return;
+             }
+            }
+               
+                
+            }
+    
+}
+
+
+
 }

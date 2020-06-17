@@ -16,10 +16,11 @@ public class Proyecto1 {
      */
     public static void main(String[] args) {
         
-    // Principal p= new Principal();
-     Administrador ad = new Administrador();
-     
-        
+    //Principal p= new Principal();
+     //Administrador ad = new Administrador();
+    // SolicitudesSeguro sso=new SolicitudesSeguro();
+     //Iniciarsesion iniciar=new Iniciarsesion();
+        Noasegurado As= new Noasegurado();
     
 }
 }
