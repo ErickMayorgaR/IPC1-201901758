@@ -306,6 +306,7 @@ public class tipobarcos {
                 System.out.println("Espacio ya ocupado");
 
             }
+            
 
         } else if (x1 - x2 == 1 && y1 - y2 == 0) {
 
@@ -350,8 +351,7 @@ public class tipobarcos {
 
             if (contador < 1) {
 
-                for (int i = y1; i <= y2; i++) {
-                    casilla[x1][i] = "|o|";
+              
                     ax1[ntot] = x1;
                     ay1[ntot] = y1;
                     ax2[ntot] = x2;
@@ -359,8 +359,10 @@ public class tipobarcos {
 
                     nd++;
                     ntot++;
-
-                }
+                    
+                      for (int i = y1; i <= y2; i++) {
+                    casilla[x1][i] = "|o|";
+                      }
             } else {
 
                 System.out.println("Espacio ya ocupado");

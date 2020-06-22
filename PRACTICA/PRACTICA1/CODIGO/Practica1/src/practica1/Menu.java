@@ -189,6 +189,7 @@ public class Menu {
 
                         submarino();
                     }
+                    
                     if (nsb > 2) {
                         System.out.println("Ya has ingresado la capacidad maxima de subarinos");
                         System.out.println("Hay en total  " + ntot + "  barcos");
@@ -398,8 +399,7 @@ ingresarbarcos();
 
     public void iniciarjuego() {
 
-        if ((ntot) == 2) {
-
+        
             if (negg < 1) {
                 arreglos.eastereggdefault();
                 iniciarjuego();
@@ -475,11 +475,9 @@ ingresarbarcos();
             }
             System.out.println("Juego Terminado"+nombr);
             
-        }else{System.out.println("aun no se ingresan todos los barcos");
-        
         
     }
-    }
+    
 
     public void imprimirtablero() {
         for (int a = 0; a < 10; a++) {
