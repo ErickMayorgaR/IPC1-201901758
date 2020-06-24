@@ -5,6 +5,8 @@
  */
 package practica2;
 
+import Hilosimpactos.PosicionAs;
+import Hilosimpactos.PosicionRayo;
 import java.awt.Color;
 
 import javax.swing.JLabel;
@@ -33,6 +35,7 @@ public class Rayo implements Runnable {
                     rayoLabel = Utilidades.posicionesLabelrayo(rayoLabel);
                     
                     tablero.add(rayoLabel);
+                    
                 }
                 
                 tablero.add(rayoLabel);
@@ -40,6 +43,10 @@ public class Rayo implements Runnable {
                 Mover procesoMover = new Mover(rayoLabel);
                 Thread hilorayo = new Thread(procesoMover);
                 hilorayo.start();
+                
+                PosicionRayo posRayo=new PosicionRayo(rayoLabel);          
+                Thread hiloposAs=new Thread(posRayo);
+                hiloposAs.start();
 
             } catch (InterruptedException e) {
                 System.out.println("No se pone la ex");

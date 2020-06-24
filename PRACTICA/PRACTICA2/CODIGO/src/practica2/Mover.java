@@ -5,6 +5,8 @@
  */
 package practica2;
 
+import Vistas.TableroJ;
+import static Vistas.TableroJ.panelTablero;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -20,15 +22,18 @@ public class Mover implements Runnable {
     @Override
     public void run() {
         while(true){
-          label.setBounds(label.getX(),label.getY()+2,label.getWidth(),label.getHeight());
-            
-        
+          label.setBounds(label.getX(),label.getY()+TableroJ.velocidad,label.getWidth(),label.getHeight());
+            if(label.getY()>=650){
+                label.setVisible(false);
+                label=null;
+               
+            break;
+        }        
         try{
-            Thread.sleep(10);
-                    
+            Thread.sleep(10);                    
         }
         catch(InterruptedException ie){
-            System.out.println("Se trabo");    
+            System.out.println("Se trabo");   
         
     }
     }

@@ -5,6 +5,7 @@
  */
 package practica2;
 
+import Hilosimpactos.PosicionCara;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import static practica2.Asteroide.asteroideLabel;
@@ -40,6 +41,10 @@ public class Caracol implements Runnable {
                 Mover procesoMover = new Mover(caracolLabel);
                 Thread hilocaracol = new Thread(procesoMover);
                 hilocaracol.start();
+                
+                  PosicionCara posCarac=new PosicionCara(caracolLabel);          
+                Thread hiloposcara=new Thread(posCarac);
+                hiloposcara.start();
 
             } catch (InterruptedException e) {
                 System.out.println("No se pone la ex");

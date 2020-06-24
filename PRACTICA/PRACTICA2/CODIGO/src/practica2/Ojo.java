@@ -5,6 +5,8 @@
  */
 package practica2;
 
+import Hilosimpactos.PosicionOjo;
+import Hilosimpactos.PosicionRayo;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import static practica2.Asteroide.asteroideLabel;
@@ -40,6 +42,10 @@ public class Ojo implements Runnable{
                 Mover procesoMover = new Mover(ojoLabel);
                 Thread hiloOjo = new Thread(procesoMover);
                 hiloOjo.start();
+                
+                  PosicionOjo posRayo=new PosicionOjo(ojoLabel);          
+                Thread hiloposAs=new Thread(posRayo);
+                hiloposAs.start();
 
             } catch (InterruptedException e) {
                 System.out.println("No se pone la ex");
