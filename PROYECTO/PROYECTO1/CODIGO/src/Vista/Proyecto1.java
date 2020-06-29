@@ -20,7 +20,7 @@ public class Proyecto1 {
      //Administrador ad = new Administrador();
    //SolicitudesSeguro sso=new SolicitudesSeguro();
      //Iniciarsesion iniciar=new Iniciarsesion();
-     //   Noasegurado As= new Noasegurado();
+     Noasegurado As= new Noasegurado();
     //AMisseguros AMS=new AMisseguros();
     //ReportarIncidente ra=new ReportarIncidente();
 }

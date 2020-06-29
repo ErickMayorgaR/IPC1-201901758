@@ -139,28 +139,17 @@ public class ReportarIncidente extends JFrame{
         terceroasegurado.setOpaque(false);
         PanelIncidente.add(terceroasegurado);
         
-        JTable lista = new JTable(datos, encabezado);       
-        lista.setBounds(20, 400, 500, 180);    
-        
-        PanelIncidente.add(lista);
-        
+//        
+//        JTable lista = new JTable(datos, encabezado);       
+//        lista.setBounds(20, 400, 500, 180);    
+//        
+//        PanelIncidente.add(lista);
+//        
 
         
         
 
       
-
-        JButton SolicitarSeguro = new JButton();
-        SolicitarSeguro.setText("<html><centrer>Solicitar Seguro<html>");
-        SolicitarSeguro.setFont(new Font("TimesNewRoman", Font.BOLD, 10));
-        SolicitarSeguro.setBounds(220, 480, 70, 50);
-        PanelIncidente.add(SolicitarSeguro);
-
-        JButton Cancelar = new JButton();
-        Cancelar.setText("Cancelar");
-        Cancelar.setFont(new Font("TimesNewRoman", Font.BOLD, 10));
-        Cancelar.setBounds(300, 490, 80, 20);
-        PanelIncidente.add(Cancelar);
 
     
 }
