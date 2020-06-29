@@ -50,7 +50,7 @@ public class Utiles {
         JLabel casilla = new JLabel();
         casilla.setLayout(null);
         casilla.setText("<html><div style='text-align: center;'>" + valor + "</div></html>");
-        casilla.setHorizontalAlignment(SwingConstants.CENTER);
+       casilla.setHorizontalAlignment(SwingConstants.CENTER);
 casilla.setVerticalAlignment(SwingConstants.CENTER);
         casilla.setOpaque(true);
 casilla.setBackground(c);
