@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ht4;
+package Tarea4;
 
-/**
- *
- * @author Erick Mayorga
- */
+import java.util.HashSet;
+import java.util.Set;
+
 public class ListaCircular {
 
     NodoCircular primer;
@@ -48,27 +47,47 @@ public class ListaCircular {
 
     public String generagraph() {
         String texto = null;
-        texto = "digraph G{" +"\n";
+        texto = "digraph G{" + "\n";
         NodoCircular actual = primer;
         do {
 
-            
-            texto +=  actual.getId() + "[label=" + "\"" + actual.getValor() + "\"" + "]"+"\n";
+            texto += actual.getId() + "[label=" + "\"" + actual.getValor() + "\"" + "]" + "\n";
             actual = actual.getSiguiente();
 
         } while (actual != primer);
-         do {
+        do {
 
-            
-            texto +=  actual.getId()+"->"+actual.getSiguiente().getId()+";"+"\n";
+            texto += actual.getId() + "->" + actual.getSiguiente().getId() + ";" + "\n";
             actual = actual.getSiguiente();
 
         } while (actual != primer);
-         
-         
+
         texto += " }";
 
         return texto;
+    }
+
+    public void cambiarNodo(String id, String valor) {
+        
+        if (this.primer == null) {
+            System.out.println("No hay nada en la lista");
+        } else {
+            
+            NodoCircular temp = primer;
+            do {
+                if (temp.getSiguiente() != null) {
+
+                    if (temp.getSiguiente().getId().equals(id)) {
+                        temp.getSiguiente().setValor(valor);
+                        return;
+                    }else{
+                        temp=temp.getSiguiente();
+                    }
+                }
+
+            } while (temp != null);
+            System.out.println("No existe");
+        }
     }
 
     public NodoCircular getPrimer() {
