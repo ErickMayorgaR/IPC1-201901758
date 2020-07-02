@@ -15,7 +15,8 @@ public class Proyecto2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Tablero ta=new Tablero();
+       Tablero ta=new Tablero();
+       // ListaSimpleVista lsv=new ListaSimpleVista();
     }
     
 }

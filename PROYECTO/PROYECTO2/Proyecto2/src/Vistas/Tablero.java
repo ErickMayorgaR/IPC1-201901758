@@ -6,7 +6,7 @@
 package Vistas;
 
 import Controladores.DatosTablero;
-import ListaSimple.NodoLS;
+import ListaSimpleUtiles.*;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.HeadlessException;
@@ -32,9 +32,12 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
  * @author Erick Mayorga
  */
 public class Tablero extends JFrame {
-    NodoLS unNodo;
+    JLabel cuadroIni;
     
-    DatosTablero controlDatos=new DatosTablero();
+
+    NodoLS unNodo;
+
+    DatosTablero controlDatos = new DatosTablero();
 
     Utiles utiles = new Utiles();
     public JPanel panelTablero;
@@ -79,13 +82,13 @@ public class Tablero extends JFrame {
 
     public void ColocarOtros() {
 
-        JLabel imagen = new JLabel();
-        imagen.setText("una etiqueta");
-        imagen.setBackground(Color.BLACK);
-        imagen.setBounds(0, 0, 100, 100);
-        imagen.setOpaque(true);
-        imagen.setVisible(true);
-        panelTablero.add(imagen);
+        cuadroIni = new JLabel();
+        cuadroIni.setText("una etiqueta");
+        cuadroIni.setBackground(Color.BLACK);
+        cuadroIni.setBounds(0, 0, 100, 100);
+        cuadroIni.setOpaque(true);
+        cuadroIni.setVisible(true);
+        panelTablero.add(cuadroIni);
 
         JButton cargaButton = utiles.CrearBoton(20, 20, "Cargar Datos");
         panelCabecera.add(cargaButton);
@@ -101,20 +104,12 @@ public class Tablero extends JFrame {
 
         JButton LDobleB = utiles.CrearBoton(560, 20, "Lista Doble");
         panelCabecera.add(LDobleB);
-        
-        JButton PilaB=utiles.CrearBoton(380,60, "Pila");
+
+        JButton PilaB = utiles.CrearBoton(380, 60, "Pila");
         panelCabecera.add(PilaB);
-        
-        
-        JButton ColaB=utiles.CrearBoton(560,60,"Cola");
+
+        JButton ColaB = utiles.CrearBoton(560, 60, "Cola");
         panelCabecera.add(ColaB);
-              
-            
-                
-                
-                
-                
-                
 
         KeyListener navKeyListener = new KeyListener() {
             @Override
@@ -125,34 +120,29 @@ public class Tablero extends JFrame {
             public void keyPressed(KeyEvent e) {
                 switch (e.getKeyCode()) {
                     case KeyEvent.VK_LEFT:
-                        if (imagen.getX() > 1) {
-                            imagen.setBounds(imagen.getX() - 100, imagen.getY(), imagen.getWidth(), imagen.getHeight());
+                        if (cuadroIni.getX() > 1) {
+                            cuadroIni.setBounds(cuadroIni.getX() - 100, cuadroIni.getY(), cuadroIni.getWidth(), cuadroIni.getHeight());
                         }
-
+                                                    
+                        
                         break;
                     case KeyEvent.VK_RIGHT:
-                        if (imagen.getX() < 600) {
-                            imagen.setBounds(imagen.getX() + 100, imagen.getY(), imagen.getWidth(), imagen.getHeight());
+                        if (cuadroIni.getX() < 600) {
+                            cuadroIni.setBounds(cuadroIni.getX() + 100, cuadroIni.getY(), cuadroIni.getWidth(), cuadroIni.getHeight());
                         }
-
                         break;
-
                     case KeyEvent.VK_DOWN:
-                        if (imagen.getY() < 400) {
-                            imagen.setBounds(imagen.getX(), imagen.getY() + 100, imagen.getWidth(), imagen.getHeight());
+                        if (cuadroIni.getY() < 400) {
+                            cuadroIni.setBounds(cuadroIni.getX(), cuadroIni.getY() + 100, cuadroIni.getWidth(), cuadroIni.getHeight());
                         }
                         break;
-
                     case KeyEvent.VK_UP:
-                        if (imagen.getY() > 1) {
-                            imagen.setBounds(imagen.getX(), imagen.getY() - 100, imagen.getWidth(), imagen.getHeight());
+                        if (cuadroIni.getY() > 1) {
+                            cuadroIni.setBounds(cuadroIni.getX(), cuadroIni.getY() - 100, cuadroIni.getWidth(), cuadroIni.getHeight());
                         }
                         break;
-
                     default:
-
                 }
-
             }
 
             @Override
@@ -162,49 +152,73 @@ public class Tablero extends JFrame {
         };
         panelTablero.addKeyListener(navKeyListener);
 
-        
         ActionListener cargaListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFileChooser dataChooser= new JFileChooser ();
-                
+                JFileChooser dataChooser = new JFileChooser();
                 dataChooser.setVisible(true);
-                
                 int select = dataChooser.showOpenDialog(rootPane);
-                
-                if(select==JFileChooser.APPROVE_OPTION){
-                    File archivo =dataChooser.getSelectedFile();
+                if (select == JFileChooser.APPROVE_OPTION) {
+                    File archivo = dataChooser.getSelectedFile();
                     try {
                         controlDatos.almacenarDatos(archivo);
                     } catch (IOException ex) {
                         Logger.getLogger(Tablero.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    
                 }
                 CrearNodoLabel();
-               
-                
-                
             }
         };
-        cargaButton.addActionListener(cargaListener);
+        cargaButton.addActionListener(cargaListener);        
+       
         
+      
+        ActionListener listaSListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ListaSimpleVista lsv=new ListaSimpleVista();
+                lsv.setVisible(true);
+            }
+        }; LSimpleB.addActionListener(listaSListener);
+        
+        
+        ActionListener colaListener =new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ColaVista cV=new ColaVista();
+                
+            }
+        }; ColaB.addActionListener(colaListener);
+        
+ActionListener pilaListener=new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PilaVista pV=new PilaVista();
+                
+            }
+        };PilaB.addActionListener(pilaListener);
+    }
+
+    public void CrearNodoLabel() {
+
+        NodoLS actual = controlDatos.getListaSNodos().primerNodo;
+        
+        while (actual != null) {
+            
+            JLabel label = utiles.crearLabel(Integer.parseInt(actual.getFila()), Integer.parseInt(actual.getColumna()), actual.getValor(), actual.getColor());
+            NodoLSl nodoLabel=new NodoLSl(label, actual.getValor(),actual.getColor());
+            controlDatos.getListaetiqueta().insertarNodo(nodoLabel);
+            panelTablero.add(controlDatos.getListaetiqueta().buscaNodo(nodoLabel).getLabel());
+            repaint();
+         
+            actual = actual.getSiguiente();
+        }
+        
+         
+        HiloPosicion hilop =new HiloPosicion(cuadroIni,controlDatos, panelCabecera);        
+        Thread esteHilop=new Thread(hilop);
+        esteHilop.start();
         
     }
-    
-   public void CrearNodoLabel() {      
-       
-        NodoLS actual = controlDatos.getListaSDatos().primerNodo;    
-          while (actual != null) {            
-         JLabel algunNodo= utiles.crearLabel(Integer.parseInt(actual.getFila()), Integer.parseInt(actual.getColumna()),actual.getValor(),actual.getColor());
-         panelTablero.add(algunNodo);
-          repaint();
-              revalidate();
-            actual=actual.getSiguiente();
-        }
-     }
-    
-    
-    
-    
+
 }

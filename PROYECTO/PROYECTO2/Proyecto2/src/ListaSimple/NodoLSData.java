@@ -9,43 +9,34 @@ package ListaSimple;
  *
  * @author Erick Mayorga
  */
-public class NodoLS {
-    NodoLS siguiente;
-    String fila;
-    String columna;
+public class NodoLSData {
+    NodoLSData siguiente;
+    
+    
     String valor;
     String color;
-
-    public NodoLS( String fila, String columna, String valor, String color) {
-      
-        this.fila = fila;
-        this.columna = columna;
+int id;
+    public NodoLSData( String valor, String color) {
+       
         this.valor = valor;
         this.color = color;
+   
     }
 
-    public NodoLS getSiguiente() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public NodoLSData getSiguiente() {
         return siguiente;
     }
 
-    public void setSiguiente(NodoLS siguiente) {
+    public void setSiguiente(NodoLSData siguiente) {
         this.siguiente = siguiente;
-    }
-
-    public String getFila() {
-        return fila;
-    }
-
-    public void setFila(String fila) {
-        this.fila = fila;
-    }
-
-    public String getColumna() {
-        return columna;
-    }
-
-    public void setColumna(String columna) {
-        this.columna = columna;
     }
 
     public String getValor() {
@@ -64,5 +55,6 @@ public class NodoLS {
         this.color = color;
     }
     
-        
+    
+    
 }
